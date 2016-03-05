@@ -1,0 +1,19 @@
+{
+	"name": "wordpress.plupload.helper",
+	"main": [
+		"js/min/wordpress.plupload.helper-min.js", 
+		"css/wordpress.plupload.helper.css", 
+		"php/functions.php"
+	],
+	"version": "0.1b",
+	"homepage": "https://github.com/cookiesfordevo/wordpress.plupload.helper",
+	"authors": [
+		{ "name": "Devon Crosby", "homepage": "http://www.theexperiment.ca" }
+	],
+	"description": "a small wrapper to help create upload areas using WordPress and Plupload",
+	"keywords": [
+		"wordpress",
+		"plupload"
+	],
+	"license": "MIT"
+}
