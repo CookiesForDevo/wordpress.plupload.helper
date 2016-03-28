@@ -64,12 +64,16 @@
 
 
 			// merge defaults, params, and data-*
-			_.config = $.extend( _.defaults, params, _.data );
+			_.config = $.extend( _.defaults, params, _.scope.data() );
 
 
 			// if a custom extension has been set, use those
 			if ( _.config.extensions ) {
-				_.config.filters.mime_types.extensions = _.config.extensions;
+				_.config.filters.mime_types = [
+					{
+						extensions : _.config.extensions
+					}
+				];
 
 			} else if ( _.config.mime && _.default_mime_types.hasOwnProperty( _.config.mime ) ) {
 				_.config.filters.mime_types = _.default_mime_types[ _.config.mime ];
@@ -164,7 +168,7 @@
 					_.scope.find( _.config.response_area ).append( response.response );
 		
 				} else {
-					_.scope.find( _.config.response_area ).slideUp('slow', function() { this.html( response.response ).slideDown('slow'); } );
+					_.scope.find( _.config.response_area ).slideUp('slow', function() { $(this).html( response.response ).slideDown('slow'); } );
 		
 				}
 		
