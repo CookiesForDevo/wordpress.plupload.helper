@@ -1,4 +1,4 @@
-wordpress.plupload.helper v0.1b
+wordpress.plupload.helper v0.2b
 =====
 
 Summary
@@ -38,8 +38,8 @@ The other method is to register and enqueue the scripts.
 	add_action('wp_print_scripts', 'enqueue_plupload_helper');
 	add_action('admin_print_scripts', 'enqueue_plupload_helper');
 	function register_plupload_helper() {
-		wp_register_style('plupload-helper', get_stylesheet_directory_uri() . '/bower_components/wordpress.plupload.helper/css/wordpress.plupload.helper.css', false, '0.1b', 'screen');
-		wp_register_script('plupload-helper', get_stylesheet_directory_uri() . '/bower_components/wordpress.plupload.helper/js/min/wordpress.plupload.helper-min.js', array('jquery','plupload-all'), '0.1b', true);
+		wp_register_style('plupload-helper', get_stylesheet_directory_uri() . '/bower_components/wordpress.plupload.helper/css/wordpress.plupload.helper.css', false, '0.2b', 'screen');
+		wp_register_script('plupload-helper', get_stylesheet_directory_uri() . '/bower_components/wordpress.plupload.helper/js/min/wordpress.plupload.helper-min.js', array('jquery','plupload-all'), '0.2b', true);
 	}
 ?>
 ```
