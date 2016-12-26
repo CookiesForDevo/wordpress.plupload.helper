@@ -76,7 +76,9 @@
 				];
 
 			} else if ( _.config.mime && _.default_mime_types.hasOwnProperty( _.config.mime ) ) {
-				_.config.filters.mime_types = _.default_mime_types[ _.config.mime ];
+				_.config.filters.mime_types = [
+					_.default_mime_types[ _.config.mime ]
+				];
 
 			} //endif
 
@@ -119,6 +121,12 @@
 
 				} //endif
 
+			});
+
+
+			// in case the data was changed after init
+			_.uploader.bind('BeforeUpload', function() {
+				_.uploader.settings.multipart_params = $.extend( _.uploader.settings.multipart_params, _.scope.data() );
 			});
 
 
@@ -178,11 +186,16 @@
 			//all done
 			_.uploader.bind('UploadComplete', function() {
 
-				_.scope.find( _.config.response_message ).slideUp('slow', function() {
-					_.scope.find( _.config.response_message ).html('Items have been uploaded!').slideDown('slow', function() {
-						_.hideUploadStatus();
+				if ( _.scope.find( _.config.response_message ).length ) {
+					_.scope.find( _.config.response_message ).slideUp('slow', function() {
+						_.scope.find( _.config.response_message ).html('Items have been uploaded!').slideDown('slow', function() {
+							_.hideUploadStatus();
+						});
 					});
-				});
+
+				} else {
+					_.hideUploadStatus();
+				}
 		
 			});
 
